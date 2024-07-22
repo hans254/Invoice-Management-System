@@ -12,7 +12,7 @@ class Invoice(models.Model):
     line_one_unit_price = models.IntegerField('Unit Price', default=0, blank=True, null=True)
     line_one_total_price = models.IntegerField('Line Total', default=0, blank=True, null=True)
 
-    '''line_two =models.CharField('Line 2', max_length=120, default='', blank=True, null=True)
+    line_two =models.CharField('Line 2', max_length=120, default='', blank=True, null=True)
     line_two_quantity = models.IntegerField('Quantity', default=0, blank=True, null=True)
     line_two_unit_price = models.IntegerField('Unit Price', default=0, blank=True, null=True)
     line_two_total_price = models.IntegerField('Line Total', default=0, blank=True, null=True)
@@ -31,7 +31,7 @@ class Invoice(models.Model):
     line_five_quantity = models.IntegerField('Quantity', default=0, blank=True, null=True)
     line_five_unit_price = models.IntegerField('Unit Price', default=0, blank=True, null=True)
     line_five_total_price = models.IntegerField('Line Total', default=0, blank=True, null=True)
-'''
+
     phone_number = models.CharField(max_length=120, default='', blank=True, null=True)
     total = models.IntegerField(default=0, blank=True, null=True)
     balance = models.IntegerField(default=0, blank=True, null=True)
