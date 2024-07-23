@@ -24,8 +24,26 @@ def add_invoice(request):
 def list_invoice(request):
     title = 'List of Invoices'
     queryset = Invoice.objects.all()
+    form = InvoiceSearchForm(request.POST or None)
+    if request.method == 'POST':
+        queryset = Invoice.objects.filter(invoice_number__icontains=form['invoice_number'].value(),
+        name__icontains=form['name'].value(),)
     context = {
         'title': title,
         'queryset': queryset,
+        'form': form,
     }
     return render(request, 'list_invoice.html', context)
+
+def update_invoice(request, pk):
+    queryset = Invoice.objects.get(id=pk)
+    form = InvoiceUpdateForm(instance = queryset)
+    if request.method == 'POST':
+        form = InvoiceUpdateForm(request.POST, instance = queryset)
+        if form.is_valid():
+            form.save()
+            return redirect('/list_invoice')
+    context = {
+        'form': form,
+    }
+    return render(request, 'entry.html', context)
