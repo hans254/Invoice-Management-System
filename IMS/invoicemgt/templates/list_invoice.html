@@ -11,6 +11,13 @@
 </head>
 <body> 
     {% include 'navbar.html' %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     {{title}} 
     <br>
@@ -31,6 +38,7 @@
                 <th>CUSTOMER NAME</th>
                 <th>INVOICE NUMBER</th>
                 <th>TOTAL</th>
+                <th>DELETE</th>
             </tr>
         </thead>
         {% for instance in queryset %}
@@ -41,6 +49,7 @@
             <td>{{instance.invoice_number}}</td>
             <!---<td>{{instance.invoice_type}}</td>--->
             <td>{{instance.line_one_total_price}}</td>
+            <td><a href="{% url 'delete_invoice' instance.id %}">Delete</a></td>
         </tr> 
         {% endfor %}  
     </table>

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .forms import *
 from .models import *
 
@@ -12,12 +13,17 @@ def home(request):
 
 def add_invoice(request):
     form = InvoiceForm(request.POST or None)
+    total_invoice = Invoice.objects.count()
+    queryset = Invoice.objects.order_by('-invoice_date')[:6]
     if form.is_valid(): 
         form.save()
+        messages.success(request, 'Saved Successfully')
         return redirect('/list_invoice')
     context = {
         'form': form,
         'title': 'New Invoice',
+        'total_invoice': total_invoice,
+        'queryset': queryset,
     }
     return render(request, 'entry.html', context)
 
@@ -42,8 +48,16 @@ def update_invoice(request, pk):
         form = InvoiceUpdateForm(request.POST, instance = queryset)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Updated Successfully')
             return redirect('/list_invoice')
     context = {
         'form': form,
     }
     return render(request, 'entry.html', context)
+
+def delete_invoice(request, pk):
+    queryset = Invoice.objects.get(id=pk)
+    if request.method == 'POST':
+        queryset.delete()
+        return redirect('/list_invoice')
+    return render(request, 'delete_invoice.html')
