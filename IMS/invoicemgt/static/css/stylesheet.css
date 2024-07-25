@@ -1,7 +1,30 @@
-/*body{
-    background-color: #eb4634;
+body{
+    background-color: #e7e7e7!important;
 }
-*/
+
+
+.main-container{
+    width: 85%;
+    margin: auto;
+}
+
+.searchform{
+    box-shadow: 10px 10px 10px;
+    box-shadow: 12px 12px 12px #2e6da4;
+    border: 1px solid #2e6da4;
+    padding: 50px;
+    margin: 30px;
+    padding-bottom: 20
+}
+.myform form{
+    /*box-shadow: 10px 10px 10px;
+    box-shadow: 12px 12px 12px #2e6da4;
+    border: 1px solid #2e6da4;
+    */
+    padding: 50px;
+    padding-bottom: 20px;
+}
+
 .myform{
     margin: 30px;
 }
@@ -27,4 +50,68 @@
     color: #fff;
     box-shadow: 12px 12px 12px #e61c66;
     text-align: center; 
+}
+
+.mymenu-bar{
+    background-color: #e81c66;
+    color: #fff;
+    display: inline;
+    padding: 10px;
+    position: fixed;
+    height: 80%;
+    bottom: 70px;
+    left: -90px;
+    z-index: 3000;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.mymenu-bar:hover{
+    left: 0px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+/*Table Pagination styling*/
+.paging-nav{
+    text-align: right;
+    padding-top: 2px;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.paging-nav a{
+    margin: auto 1px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1px 7px;
+    background: #91b9e6;
+    color: #fff;
+    border-radius: 100px;
+}
+
+.paging-nav .selected-page{
+    background: #187ed5;
+    font-weight: bold;
+}
+
+/*Scroll to top styling*/
+.scrollToTop{
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    position: fixed;
+    bottom: 18px;
+    right: 20px;
+    display: none;
+}
+
+.scrollToTop:hover{
+    text-decoration: none;
+    opacity: 0.3;
 }

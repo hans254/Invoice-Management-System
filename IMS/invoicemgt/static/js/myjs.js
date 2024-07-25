@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    alert("We are all set!");
+    //alert("We are all set!");
+    $('.table').paging({limit:15});
 
     $('#div_id_line_six,#div_id_line_six_quantity, #div_id_line_six_unit_price, #div_id_line_six_total_price,#div_id_line_seven,#div_id_line_seven_quantity, #div_id_line_seven_unit_price, #div_id_line_seven_total_price,#div_id_line_eight,#div_id_line_eight_quantity, #div_id_line_eight_unit_price, #div_id_line_eight_total_price,#div_id_line_nine,#div_id_line_nine_quantity, #div_id_line_nine_unit_price, #div_id_line_nine_total_price,#div_id_line_ten,#div_id_line_ten_quantity, #div_id_line_ten_unit_price, #div_id_line_ten_total_price,').hide()
     $('#more-line').click(function(){
@@ -64,6 +65,21 @@ $(document).ready(function(){
         $('#id_line_nine_total_price').val(line_nine_total);
         $('#id_line_ten_total_price').val(line_ten_total);
         $('#id_total').val(total);
+    });
+
+    //scroll Top Script
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('.scrollToTop').fadeIn();
+        }else{
+            $('.scrollToTop').fadeOut();
+        }
+    });
+
+    //Click event to scroll to top
+    $('.scrollToTop').click(function () {
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
     });
    
 });

@@ -5,13 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'js/jquery-ui-1.13.3/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/jquery-ui-1.13.3/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/jquery-ui-1.13.3/jquery-ui.theme.min.css' %}">
+    
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.13.3/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/myjs.js' %}"></script>
+    <script src="{% static 'js/pager/paging.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
     <title>List of Invoices</title>
 </head>
 <body> 
     {% include 'navbar.html' %}
-    {% if messages %}
+    <div class="main-container">
+        {% if messages %}
         <ul class="messages">
             {% for message in messages %}
             <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
@@ -19,13 +28,30 @@
         </ul>
     {% endif %}
 
-    {{title}} 
+     
     <br>
-    <div class="myform">
+    <div class="searchform">
+        {{title}} <br><br>
         <form action="" method="POST">{% csrf_token %}
-            {{form|crispy}}
-            <br>
-            <input type="submit" value="Search">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            {{ form.invoice_number|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{ form.name|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{ form.generate_invoice|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-3">
+                            <br>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
     <br>
@@ -53,7 +79,9 @@
         </tr> 
         {% endfor %}  
     </table>
+    <a href="#" class="scrollToTop">Scroll To Top</a>
     <br>
-     
+    </div>
+    
 </body>
 </html>
