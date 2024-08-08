@@ -60,9 +60,11 @@
         <thead>
             <tr>
                 <th>COUNT</th>
-                <th>DATE</th>
                 <th>CUSTOMER NAME</th>
                 <th>INVOICE NUMBER</th>
+                <th>INVOICE TYPE</th>
+                <th>PHONE NO.</th>
+                <th>DATE</th>
                 <th>TOTAL</th>
                 <th>DELETE</th>
             </tr>
@@ -70,10 +72,11 @@
         {% for instance in queryset %}
         <tr>
             <td>{{forloop.counter}}</td>
-            <td>{{instance.invoice_date}}</td>
             <td><a href="{% url 'update_invoice' instance.id %}">{{instance.name}}</a></td>
             <td>{{instance.invoice_number}}</td>
-            <!---<td>{{instance.invoice_type}}</td>--->
+            <td>{{instance.invoice_type}}</td>
+            <td>{{instance.phone_number}}</td>
+            <td>{{instance.invoice_date}}</td>
             <td>{{instance.line_one_total_price}}</td>
             <td><a href="{% url 'delete_invoice' instance.id %}">Delete</a></td>
         </tr> 

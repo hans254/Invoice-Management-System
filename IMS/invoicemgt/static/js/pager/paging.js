@@ -5,7 +5,7 @@
                 limit: 5,
                 rowDisplayStyle: 'block',
                 activePage: 0,
-                rows: []
+                rows: [5]
             },
             _create: function() {
                 var rows = $("tbody", this.element).children();
